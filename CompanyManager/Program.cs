@@ -8,6 +8,7 @@ namespace CompanyManager
 {
     class Program
     {
+        
         static List<Supplier> suppliers = new List<Supplier>();
         static List<Client> clients = new List<Client>();
         static void Main(string[] args)
@@ -40,21 +41,55 @@ namespace CompanyManager
             //}
             //public Supplier(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions)
 
-            Supplier atum = new Supplier("atum", "rua de viana n 6", 25634, 965211, "atum@geral.pt", "Espanha", "30 dias");
-            Supplier barcos = new Supplier("barcos", "rua de guima n 6", 29834, 942551, "barcos@geral.pt", "Noruega", "60 dias");
-            suppliers.Add(atum);
-            suppliers.Add(barcos);
-            CreateSupplier();
 
-            foreach (Supplier s in suppliers)
-            {
-                Console.WriteLine("***************************************");
-                Console.WriteLine(s.ToString());
-                Console.WriteLine("***************************************");
-            }
 
+
+
+
+
+            //Supplier atum = new Supplier("atum", "rua de viana n 6", 25634, 965211, "atum@geral.pt", "Espanha", "30 dias");
+            //Supplier barcos = new Supplier("barcos", "rua de guima n 6", 29834, 942551, "barcos@geral.pt", "Noruega", "60 dias");
+            //suppliers.Add(atum);
+            //suppliers.Add(barcos);
+            //CreateSupplier();
+
+            //foreach (Supplier s in suppliers)
+            //{
+            //    Console.WriteLine("***************************************");
+            //    Console.WriteLine(s.ToString());
+            //    Console.WriteLine("***************************************");
+            //}
+            Company company = CreateCompany();
+            Console.WriteLine("***************************************");
+            Console.WriteLine(company.ToString());
+            Console.WriteLine("***************************************");
             Console.ReadKey();
         }
+
+
+        public static Company CreateCompany()
+        {
+            Company company = new Company();
+
+            Console.Write("\nCompany Name: ");
+            company.Name = Console.ReadLine();
+
+            Console.Write("\nCompany Address: ");
+            company.Address = Console.ReadLine();
+
+            company.Nif = TryReadInt("Company Nif");
+
+            company.MobileContact = TryReadInt("Company Mobile Contact");
+
+            Console.Write("\nCompany Email: ");
+            company.Email = Console.ReadLine();
+
+            Console.Write("\nCompany Country: ");
+            company.Country = Console.ReadLine();
+
+            return company;
+        }
+
         public static void CreateSupplier()
         {
             Supplier supplier = new Supplier();
