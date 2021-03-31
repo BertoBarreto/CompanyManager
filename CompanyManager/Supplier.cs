@@ -64,6 +64,10 @@ namespace CompanyManager
         #endregion
 
         #region METHODS
+        /// <summary>
+        /// This method overrides the ToString method of the Supplier
+        /// </summary>
+        /// <returns>Formated string</returns>
         public override string ToString() {
 
             return string.Format($"Name:{Name}\n Address: {Address}\n Nif:" +

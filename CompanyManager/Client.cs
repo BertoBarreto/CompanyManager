@@ -56,6 +56,7 @@ namespace CompanyManager
         /// <param name="Email">Client email</param>
         /// <param name="Country">Client country</param>
         /// <param name="paymentConditions">Client payment Conditions</param>
+        /// <param name="creditLimit">Client creditLimit</param>
         public Client(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions, int creditLimit)
         {
             this.Name = Name;
@@ -79,7 +80,10 @@ namespace CompanyManager
         #region GETTERS
 
         #endregion
-
+        /// <summary>
+        /// This method overrides the ToString method of the Client class
+        /// </summary>
+        /// <returns>Formated string</returns>
         public override string ToString()
         {
             return string.Format($"Name: {Name}\n Address: {Address}\n Nif: " +
