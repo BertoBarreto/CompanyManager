@@ -39,8 +39,11 @@ namespace CompanyManager
             //    Console.WriteLine("***************************************");
             //}
             //public Supplier(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions)
+
             Supplier atum = new Supplier("atum", "rua de viana n 6", 25634, 965211, "atum@geral.pt", "Espanha", "30 dias");
             Supplier barcos = new Supplier("barcos", "rua de guima n 6", 29834, 942551, "barcos@geral.pt", "Noruega", "60 dias");
+            suppliers.Add(atum);
+            suppliers.Add(barcos);
             CreateSupplier();
 
             foreach (Supplier s in suppliers)
@@ -62,9 +65,9 @@ namespace CompanyManager
             Console.Write("\nCliente Address: ");
             supplier.Address  = Console.ReadLine();
 
-            supplier.Nif  = TryReadInt("\nSupplier Nif: ");
+            supplier.Nif  = TryReadInt("Supplier Nif: ");
 
-            supplier.MobileContact  = TryReadInt("\nSupplier Mobile Number: ");
+            supplier.MobileContact  = TryReadInt("Supplier Mobile Number: ");
 
             Console.Write("\nSuppiler Email: ");
             supplier.Email = Console.ReadLine();
@@ -76,8 +79,6 @@ namespace CompanyManager
             supplier.PaymentConditions = Console.ReadLine();
 
             suppliers.Add(supplier);
-            
-
         }
 
         public static void CreateClient()
