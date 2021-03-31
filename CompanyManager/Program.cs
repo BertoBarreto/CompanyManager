@@ -39,7 +39,7 @@ namespace CompanyManager
             //    Console.WriteLine("***************************************");
             //}
             //public Supplier(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions)
-
+            //teste
             Supplier atum = new Supplier("atum", "rua de viana n 6", 25634, 965211, "atum@geral.pt", "Espanha", "30 dias");
             Supplier barcos = new Supplier("barcos", "rua de guima n 6", 29834, 942551, "barcos@geral.pt", "Noruega", "60 dias");
             suppliers.Add(atum);
