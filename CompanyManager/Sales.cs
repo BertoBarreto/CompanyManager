@@ -13,35 +13,8 @@ namespace CompanyManager
     public class Sales
     {
         #region PROPERTIES
-        private string itemName;
-        private int itemId;
-        private double amount;
-        private double price;
+        FinalItem item;
         Client client;
-
-        public double Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
-
-        public double Amount
-        {
-            get { return amount; }
-            set { amount = value; }
-        }
-
-        public string ItemName
-        {
-            get { return itemName; }
-            set { itemName = value; }
-        }
-
-        public int ItemId
-        {
-            get { return itemId; }
-            set { itemId = value; }
-        }
 
         public string Client
         {
@@ -57,10 +30,7 @@ namespace CompanyManager
         /// </summary>
         public Sales()
         {
-            itemName = null;
-            itemId = -1;
-            amount = -1;
-            price = -1;
+            item = null;
             client = null;
         }
 
@@ -69,10 +39,10 @@ namespace CompanyManager
         /// </summary>
         public Sales(string itemName, int itemId, double amount, double price)
         {
-            this.itemName = itemName;
-            this.itemId = itemId;
-            this.amount = amount;
-            this.price = price;
+            this.item.ItemName = itemName;
+            //this.item.ItemId = itemId;
+            this.item.Amount = amount;
+            this.item.Price = price;
             client = InformationManager.CreateClient();
         }
 
@@ -81,10 +51,10 @@ namespace CompanyManager
         /// </summary>
         public Sales(string itemName, int itemId, double amount, double price, Client client)
         {
-            this.itemName = itemName;
-            this.itemId = itemId;
-            this.amount = amount;
-            this.price = price;
+            this.item.ItemName = itemName;
+            //this.item.itemId = itemId;
+            this.item.Amount = amount;
+            this.item.Price = price;
             this.client = client;
         }
         #endregion
@@ -108,7 +78,7 @@ namespace CompanyManager
         {
             this.client = client;
         }
-        
+
         #endregion
 
         #region GETTERS
@@ -124,16 +94,8 @@ namespace CompanyManager
                 return false;
             if (!client.CheckClientInfo())
                 return false;
-            if (itemName == null)
+            if (!item.CheckInfo())
                 return false;
-            if (itemId < 0)
-                return false;
-            if(amount < 0)
-                return false;
-            if (price < 0)
-                return false;
-            
-
 
             return true;
         }

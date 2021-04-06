@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Company.cs" />
+    <Compile Include="FinalItem.cs" />
     <Compile Include="Information.cs" />
     <Compile Include="InformationManager.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -61,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -13,22 +13,11 @@ using System.Text;
 
 namespace CompanyManager
 {
-    public class Stock
+    public static class Stock
     {
         #region PROPERTIES
+        private static List<Item> stock;
 
-
-        #endregion
-
-        #region CONSTRUCTORS
-
-        /// <summary>
-        /// Basic Class constructor
-        /// </summary>
-        public Stock()
-        {
-            
-        }
 
         #endregion
 
@@ -39,7 +28,29 @@ namespace CompanyManager
         #endregion
 
         #region GETTERS
+        /// <summary>
+        /// This method allows to get the stock
+        /// </summary>
+        /// <returns>List of Item</returns>
+        public static List<Item> GetStock()
+        {
+            return stock;
+        }
 
+        /// <summary>
+        /// This method allows to search for an item in the stock
+        /// </summary>
+        /// <param name="itemName">Item name</param>
+        /// <returns>Item</returns>
+        public static Item GetItem(string itemName)
+        {
+            foreach (Item i in stock) {
+                if (i.ItemName == itemName)
+                    return i;
+            }
+
+            return null;
+        }
         #endregion
 
         #endregion

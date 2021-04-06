@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Purpose: This method as the basic information of clients, suppliers and company
+/// Purpose: This class has the basic information of clients, suppliers and company
 /// Created By: Roberto Barreto - 21123 || Henrique Cartucho - 21122
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 3/30/2021 11:44:16 AM
