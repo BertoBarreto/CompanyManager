@@ -17,7 +17,7 @@ namespace CompanyManager
         private int itemId;
         private double amount;
         private double price;
-        //client
+        Client client;
 
         public double Price
         {
@@ -43,6 +43,11 @@ namespace CompanyManager
             set { itemId = value; }
         }
 
+        public string Client
+        {
+            get { return client.ToString(); }
+        }
+
         #endregion
 
         #region CONSTRUCTORS
@@ -56,7 +61,7 @@ namespace CompanyManager
             itemId = -1;
             amount = -1;
             price = -1;
-            //client null
+            client = null;
         }
 
         /// <summary>
@@ -68,19 +73,70 @@ namespace CompanyManager
             this.itemId = itemId;
             this.amount = amount;
             this.price = price;
-            //client
+            client = InformationManager.CreateClient();
+        }
+
+        /// <summary>
+        /// Basic Class constructor with parameters
+        /// </summary>
+        public Sales(string itemName, int itemId, double amount, double price, Client client)
+        {
+            this.itemName = itemName;
+            this.itemId = itemId;
+            this.amount = amount;
+            this.price = price;
+            this.client = client;
         }
         #endregion
 
         #region METHODS
 
         #region SETTERS
+        /// <summary>
+        /// This method allows to create and set the sale client
+        /// </summary>
+        public void SetClient()
+        {
+            client = InformationManager.CreateClient();
+        }
 
+        /// <summary>
+        /// This method allows to set a client to a sale
+        /// </summary>
+        /// <param name="client">Client to set to sale</param>
+        public void SetClient(Client client)
+        {
+            this.client = client;
+        }
+        
         #endregion
 
         #region GETTERS
 
         #endregion
+        /// <summary>
+        /// This method checks if the client has information and the sale aswell
+        /// </summary>
+        /// <returns>Bool</returns>
+        public bool CompleteSale()
+        {
+            if (!client.CheckInfo())
+                return false;
+            if (!client.CheckClientInfo())
+                return false;
+            if (itemName == null)
+                return false;
+            if (itemId < 0)
+                return false;
+            if(amount < 0)
+                return false;
+            if (price < 0)
+                return false;
+            
+
+
+            return true;
+        }
 
         #endregion
 
