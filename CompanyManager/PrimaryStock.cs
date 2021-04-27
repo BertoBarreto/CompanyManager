@@ -13,39 +13,40 @@ using System.Text;
 
 namespace CompanyManager
 {
-    public static class Stock
+    public static class PrimaryStock
     {
-        #region PROPERTIES
-        private static List<Item> stock;
-
-
-        #endregion
+        private static List<PrimaryItem> stock = new List<PrimaryItem>();
 
         #region METHODS
 
         #region SETTERS
-
+        public static void AddItem(PrimaryItem item)
+        {
+            stock.Add(item);
+        }
         #endregion
 
         #region GETTERS
         /// <summary>
         /// This method allows to get the stock
         /// </summary>
-        /// <returns>List of Item</returns>
-        public static List<Item> GetStock()
+        /// <returns>List of PrimaryItems</returns>
+        public static void GetStock()
         {
-            return stock;
+            foreach (PrimaryItem i in stock){
+                Console.WriteLine($"{i}");
+            }
         }
 
         /// <summary>
         /// This method allows to search for an item in the stock
         /// </summary>
-        /// <param name="itemName">Item name</param>
-        /// <returns>Item</returns>
-        public static Item GetItem(string itemName)
+        /// <param name="id">Item id</param>
+        /// <returns>PrimaryItem</returns>
+        public static PrimaryItem GetItem(int id)
         {
-            foreach (Item i in stock) {
-                if (i.ItemName == itemName)
+            foreach (PrimaryItem i in stock) {
+                if (i.Id == id)
                     return i;
             }
 

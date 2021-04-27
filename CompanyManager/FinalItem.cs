@@ -10,7 +10,7 @@ using System.Text;
 
 namespace CompanyManager
 {
-    public class FinalItem : Item
+    public class FinalItem : PrimaryItem, Iitem
     {
         #region PROPERTIES
         private double price;
@@ -22,17 +22,13 @@ namespace CompanyManager
             set { price = value; }
         }
 
-        
+
         #endregion
 
         #region CONSTRUCTORS
-
-        /// <summary>
-        /// Basic Class constructor
-        /// </summary>
-        public FinalItem()
+        public FinalItem(double price, int itemId, string itemName, double amount) : base(itemId, amount, itemName)
         {
-
+            this.price = price;
         }
 
         #endregion
@@ -42,7 +38,7 @@ namespace CompanyManager
         {
             if (ItemName == null)
                 return false;
-            if (ItemId < 0)
+            if (Id < 0)
                 return false;
             if (Amount < 0)
                 return false;
@@ -54,7 +50,6 @@ namespace CompanyManager
 
 
         #region SETTERS
-
         #endregion
 
         #region GETTERS
