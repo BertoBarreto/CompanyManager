@@ -56,6 +56,7 @@ namespace CompanyManager
         /// <param name="Email">Client email</param>
         /// <param name="Country">Client country</param>
         /// <param name="paymentConditions">Client payment Conditions</param>
+        /// <param name="creditLimit">Client creditLimit</param>
         public Client(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions, int creditLimit)
         {
             this.Name = Name;

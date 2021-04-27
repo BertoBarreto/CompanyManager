@@ -10,9 +10,7 @@ using System.Text;
 
 namespace CompanyManager
 {
-    /// <summary>
-    /// Purpose: 
-    /// </summary>
+
     public class Supplier : Information
     {
         #region PROPERTIES
