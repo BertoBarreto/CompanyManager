@@ -56,6 +56,7 @@ namespace CompanyManager
         /// <param name="Email">Client email</param>
         /// <param name="Country">Client country</param>
         /// <param name="paymentConditions">Client payment Conditions</param>
+        /// <param name="creditLimit">Client creditLimit</param>
         public Client(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions, int creditLimit)
         {
             this.Name = Name;
@@ -72,6 +73,20 @@ namespace CompanyManager
 
         #region METHODS
 
+        /// <summary>
+        /// This method checks if the client info as information
+        /// </summary>
+        /// <returns>Bool</returns>
+        public bool CheckClientInfo()
+        {
+            if (paymentConditions == null)
+                return false;
+            if (creditLimit <= 0)
+                return false;
+
+            return true;
+        }
+
         #region SETTERS
 
         #endregion
@@ -80,13 +95,20 @@ namespace CompanyManager
 
         #endregion
 
+        #region OVERRRIDES
+        /// <summary>
+        /// This method overrides the ToString Method of the Client
+        /// </summary>
+        /// <returns>Formated String<returns>
         public override string ToString()
         {
-            return string.Format($"Name: {Name}\n Address: {Address}\n Nif: " +
+            return string.Format($" Name: {Name}\n Address: {Address}\n Nif: " +
                 $"{Nif}\n Mobile Contact: {MobileContact}\n Email: {Email}\n Country: {Country}" +
                 $" \n Payment Conditions: {paymentConditions}\n CreditLimit: {creditLimit}€");
         }
+        #endregion
 
+        
         #endregion
 
     }

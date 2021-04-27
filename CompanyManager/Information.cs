@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Purpose: This method as the basic information of clients, suppliers and company
+/// Purpose: This class has the basic information of clients, suppliers and company
 /// Created By: Roberto Barreto - 21123 || Henrique Cartucho - 21122
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 3/30/2021 11:44:16 AM
@@ -52,20 +52,33 @@ namespace CompanyManager
         }
         #endregion
 
-        #region CONSTRUCTORS
-
-        /// <summary>
-        /// Basic Class constructor
-        /// </summary>
-        public Information()
-        {
-
-        }
-
-        #endregion
-
         #region METHODS
+        /// <summary>
+        /// This method checks if information class has information
+        /// </summary>
+        /// <returns>Bool</returns>
+        public bool CheckInfo()
+        {
+            if (name == null)
+                return false;
 
+            if (address == null)
+                return false;
+
+            if (nif <= 0)//verifiar se é nif
+                return false;
+
+            if (mobileContact <= 0) // verificar se tem 9 numeros
+                return false;
+
+            if (email == null)//verificar se é email
+                return false;
+
+            if (country == null) // verifiar base de dados de países
+                return false;
+
+            return true;
+        }
         #region SETTERS
 
         #endregion

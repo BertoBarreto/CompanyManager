@@ -13,34 +13,12 @@ namespace CompanyManager
     public class Sales
     {
         #region PROPERTIES
-        private string itemName;
-        private int itemId;
-        private double amount;
-        private double price;
-        //client
+        FinalItem item;
+        Client client;
 
-        public double Price
+        public string Client
         {
-            get { return price; }
-            set { price = value; }
-        }
-
-        public double Amount
-        {
-            get { return amount; }
-            set { amount = value; }
-        }
-
-        public string ItemName
-        {
-            get { return itemName; }
-            set { itemName = value; }
-        }
-
-        public int ItemId
-        {
-            get { return itemId; }
-            set { itemId = value; }
+            get { return client.ToString(); }
         }
 
         #endregion
@@ -52,11 +30,8 @@ namespace CompanyManager
         /// </summary>
         public Sales()
         {
-            itemName = null;
-            itemId = -1;
-            amount = -1;
-            price = -1;
-            //client null
+            item = null;
+            client = null;
         }
 
         /// <summary>
@@ -64,23 +39,66 @@ namespace CompanyManager
         /// </summary>
         public Sales(string itemName, int itemId, double amount, double price)
         {
-            this.itemName = itemName;
-            this.itemId = itemId;
-            this.amount = amount;
-            this.price = price;
-            //client
+            this.item.ItemName = itemName;
+            //this.item.ItemId = itemId;
+            this.item.Amount = amount;
+            this.item.Price = price;
+            client = InformationManager.CreateClient();
+        }
+
+        /// <summary>
+        /// Basic Class constructor with parameters
+        /// </summary>
+        public Sales(string itemName, int itemId, double amount, double price, Client client)
+        {
+            this.item.ItemName = itemName;
+            //this.item.itemId = itemId;
+            this.item.Amount = amount;
+            this.item.Price = price;
+            this.client = client;
         }
         #endregion
 
         #region METHODS
 
         #region SETTERS
+        /// <summary>
+        /// This method allows to create and set the sale client
+        /// </summary>
+        public void SetClient()
+        {
+            client = InformationManager.CreateClient();
+        }
+
+        /// <summary>
+        /// This method allows to set a client to a sale
+        /// </summary>
+        /// <param name="client">Client to set to sale</param>
+        public void SetClient(Client client)
+        {
+            this.client = client;
+        }
 
         #endregion
 
         #region GETTERS
 
         #endregion
+        /// <summary>
+        /// This method checks if the client has information and the sale aswell
+        /// </summary>
+        /// <returns>Bool</returns>
+        public bool CompleteSale()
+        {
+            if (!client.CheckInfo())
+                return false;
+            if (!client.CheckClientInfo())
+                return false;
+            if (!item.CheckInfo())
+                return false;
+
+            return true;
+        }
 
         #endregion
 

@@ -10,9 +10,7 @@ using System.Text;
 
 namespace CompanyManager
 {
-    /// <summary>
-    /// Purpose: 
-    /// </summary>
+
     public class Supplier : Information
     {
         #region PROPERTIES
@@ -64,9 +62,13 @@ namespace CompanyManager
         #endregion
 
         #region METHODS
+        /// <summary>
+        /// This method overrides the ToString Method of the Client
+        /// </summary>
+        /// <returns>Formated String<returns>
         public override string ToString() {
 
-            return string.Format($"Name:{Name}\n Address: {Address}\n Nif:" +
+            return string.Format($" Name:{Name}\n Address: {Address}\n Nif:" +
                 $"{Nif}\n Mobile Contact: {MobileContact}\n Email:{Email}\n Country:{Country}"+
                 $"\n Payment conditions: {PaymentConditions}");
         }
