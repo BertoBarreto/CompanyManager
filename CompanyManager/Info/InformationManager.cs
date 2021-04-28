@@ -59,38 +59,26 @@ namespace CompanyManager
             Console.Write("\nSupplier Country: ");
             s.Country = Console.ReadLine();
         }
-        /// <summary>
-        /// This method allows to get basic information of a company
-        /// </summary>
-        /// <param name="c">Company to get the information</param>
-        private static void BasicInfo(Company c)
-        {
-            Console.Write("\nCompany Name: ");
-            c.Name = Console.ReadLine();
-
-            Console.Write("\nCompany Address: ");
-            c.Address = Console.ReadLine();
-
-            c.Nif = TryReadInt("Company Nif");
-
-            c.MobileContact = TryReadInt("Company Mobile Contact");
-
-            Console.Write("\nCompanyt Email: ");
-            c.Email = Console.ReadLine();
-
-            Console.Write("\nCompany Country: ");
-            c.Country = Console.ReadLine();
-        }
         #endregion
 
         #region CREATE
-        public static Company CreateCompany()
+        public static void CreateCompany()
         {
-            Company company = new Company();
+            Console.Write("\nCompany Name: ");
+            Company.Name = Console.ReadLine();
 
-            BasicInfo(company);
+            Console.Write("\nCompany Address: ");
+            Company.Address = Console.ReadLine();
 
-            return company;
+            Company.Nif = TryReadInt("Company Nif");
+
+            Company.MobileContact = TryReadInt("Company Mobile Contact");
+
+            Console.Write("\nCompanyt Email: ");
+            Company.Email = Console.ReadLine();
+
+            Console.Write("\nCompany Country: ");
+            Company.Country = Console.ReadLine();
         }
 
         public static Supplier CreateSupplier()
@@ -140,25 +128,24 @@ namespace CompanyManager
         /// This method allows to list all the suppliers inside a list of suppliers
         /// </summary>
         /// <param name="suppliers">Suppliers of clients</param>
-        public static void List(List<Supplier> suppliers)
+        public static void ListSuppliers()
         {
-            foreach (Supplier supplier in suppliers)
-            {
-                Console.WriteLine("***************************************");
-                Console.WriteLine(supplier.ToString());
-                Console.WriteLine("***************************************");
-            }
+
+            Console.WriteLine("***************************************");
+            Suppliers.ListSuppliers();
+            Console.WriteLine("***************************************");
+            
         }
 
         /// <summary>
         /// This method allows to list the company
         /// </summary>
         /// <param name="company">Company to list</param>
-        public static void List(Company company)
+        public static void ListCompay()
         {
 
             Console.WriteLine("***************************************");
-            Console.WriteLine(company.ToString());
+            Console.WriteLine(Company.GetCompanyInfo());
             Console.WriteLine("***************************************");
             
         }

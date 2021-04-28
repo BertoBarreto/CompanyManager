@@ -82,6 +82,15 @@ namespace CompanyManager
         {
             this.amount += amount;
         }
+
+        /// <summary>
+        /// This method allows to edit the item name
+        /// </summary>
+        /// <param name="name">The new item name</param>
+        public void EditItem(string name)
+        {
+            this.itemName = name;
+        }
         #endregion
 
         #region GETTERS

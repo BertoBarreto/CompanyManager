@@ -21,5 +21,6 @@ namespace CompanyManager
 
         void RemoveAmount(double amount);
         void AddAmount(double amount);
+        void EditItem(string name);
     }
 }
