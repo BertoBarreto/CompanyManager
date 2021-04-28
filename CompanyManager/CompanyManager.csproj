@@ -44,13 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Company.cs" />
-    <Compile Include="FinalItem.cs" />
-    <Compile Include="Information.cs" />
-    <Compile Include="InformationManager.cs" />
-    <Compile Include="Iitem.cs" />
-    <Compile Include="PrimaryItem.cs" />
+    <Compile Include="Info\Client.cs" />
+    <Compile Include="Info\Company.cs" />
+    <Compile Include="Info\Suppliers.cs" />
+    <Compile Include="Item\FinalItem.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Stock\FinalStock.cs" />
+    <Compile Include="Info\Information.cs" />
+    <Compile Include="Info\InformationManager.cs" />
+    <Compile Include="Item\Iitem.cs" />
+    <Compile Include="Item\PrimaryItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -59,8 +62,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Sales.cs" />
-    <Compile Include="PrimaryStock.cs" />
-    <Compile Include="Supplier.cs" />
+    <Compile Include="Stock\PrimaryStock.cs" />
+    <Compile Include="Info\Supplier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

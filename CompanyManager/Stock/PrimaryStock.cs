@@ -24,6 +24,8 @@ namespace CompanyManager
         {
             stock.Add(item);
         }
+
+        
         #endregion
 
         #region GETTERS
@@ -43,14 +45,16 @@ namespace CompanyManager
         /// </summary>
         /// <param name="id">Item id</param>
         /// <returns>PrimaryItem</returns>
-        public static PrimaryItem GetItem(int id)
+        public static void GetItem(int id)
         {
             foreach (PrimaryItem i in stock) {
                 if (i.Id == id)
-                    return i;
+                {
+                    Console.WriteLine($"{i.ToString()}");
+                    return;
+                }
             }
-
-            return null;
+            Console.WriteLine("The item you are looking for doesnt exist");
         }
         #endregion
 
