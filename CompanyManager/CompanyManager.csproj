@@ -44,13 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCheck.cs" />
     <Compile Include="Info\Client.cs" />
     <Compile Include="Info\Company.cs" />
+    <Compile Include="Info\Supplier.cs" />
     <Compile Include="Info\Suppliers.cs" />
     <Compile Include="Item\FinalItem.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="Info\Information.cs" />
-    <Compile Include="Info\InformationManager.cs" />
+    <Compile Include="Info\IInformation.cs" />
+    <Compile Include="Info\Clients.cs" />
     <Compile Include="Item\Iitem.cs" />
     <Compile Include="Item\PrimaryItem.cs" />
     <Compile Include="Program.cs" />
@@ -62,11 +64,10 @@
     </Compile>
     <Compile Include="Sales.cs" />
     <Compile Include="Stock\Stock.cs" />
-    <Compile Include="Info\Supplier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

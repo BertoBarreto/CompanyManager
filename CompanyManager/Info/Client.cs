@@ -1,5 +1,4 @@
 ﻿/// <summary>
-/// Purpose: This method has the client information
 /// Created By: Roberto Barreto - 21123 || Henrique Cartucho - 21122
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 3/30/2021 11:54:39 AM
@@ -10,42 +9,91 @@ using System.Text;
 
 namespace CompanyManager
 {
-    public class Client : Information
+    /// <summary>
+    /// Purpose: This class manages all the client information
+    /// </summary>
+    public class Client : IInformation
     {
         #region PROPERTIES
-        private string paymentConditions;
-        private double creditLimit;
+        private string name;
+        public string Name
+        {
+            get { return name; }
+        }
 
+        private string address;
+        public string Address
+        {
+            get { return address; }
+        }
+
+        private int nif;
+        public int Nif
+        {
+            get { return nif; }
+        }
+
+        private int mobileContact;
+        public int MobileContact
+        {
+            get { return mobileContact; }
+        }
+
+        private string email;
+        public string Email
+        {
+            get { return email; }
+        }
+
+        private string country;
+        public string Country
+        {
+            get { return country; }
+        }
+        
+        private double creditLimit;
         public double CreditLimit
         {
             get { return creditLimit; }
-            set { creditLimit = value; }
         }
 
+        private string paymentConditions;
         public string PaymentConditions
         {
             get { return paymentConditions; }
-            set { paymentConditions = value; }
         }
 
         #endregion
 
         #region CONSTRUCTORS
-
         /// <summary>
-        /// Basic Class constructor with no parameters
+        /// This constructor allows to get all the client information
         /// </summary>
         public Client()
         {
-            Name = null;
-            Address = null;
-            Nif = -1;
-            MobileContact = -1;
-            Email = null;
-            Country = null;
-            paymentConditions = null;
-            creditLimit = -1;
+            Console.Write("\nClient Name: ");
+            name = Console.ReadLine();
+
+            Console.Write("\nClient Address: ");
+            address = Console.ReadLine();
+
+            nif = DataCheck.TryReadInt("Client Nif");
+
+            mobileContact = DataCheck.TryReadInt("Client Mobile Contact");
+
+            Console.Write("\nClient Email: ");
+            email = Console.ReadLine();
+
+            Console.Write("\nClient Country: ");
+            country = Console.ReadLine();
+
+            Console.Write("\nClient Payment Conditions: ");
+            paymentConditions = Console.ReadLine();
+
+            Console.Write("\nClient credit limit: ");
+            creditLimit = DataCheck.TryReadInt("Client Credit Limit");
         }
+
         /// <summary>
         /// Class constructor with parameters
         /// </summary>
@@ -59,12 +107,12 @@ namespace CompanyManager
         /// <param name="creditLimit">Client creditLimit</param>
         public Client(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions, int creditLimit)
         {
-            this.Name = Name;
-            this.Address = Address;
-            this.Nif = Nif;
-            this.MobileContact = MobileContact;
-            this.Email = Email;
-            this.Country = Country;
+            this.name = Name;
+            this.address = Address;
+            this.nif = Nif;
+            this.mobileContact = MobileContact;
+            this.email = Email;
+            this.country = Country;
             this.paymentConditions = paymentConditions;
             this.creditLimit = creditLimit;
         }
@@ -73,22 +121,78 @@ namespace CompanyManager
 
         #region METHODS
 
-        /// <summary>
-        /// This method checks if the client info as information
-        /// </summary>
-        /// <returns>Bool</returns>
-        public bool CheckClientInfo()
-        {
-            if (paymentConditions == null)
-                return false;
-            if (creditLimit <= 0)
-                return false;
-
-            return true;
-        }
-
         #region SETTERS
 
+        /// <summary>
+        /// This function allows to set the client name
+        /// </summary>
+        /// <param name="name">New Name</param>
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+        /// <summary>
+        /// This function allows to set the client address
+        /// </summary>
+        /// <param name="address">New Address</param>
+        public void SetAddress(string address)
+        {
+            this.address = address;
+        }
+
+        /// <summary>
+        /// This function allows to set the client nif
+        /// </summary>
+        /// <param name="nif">New Nif</param>
+        public void SetNif(int nif)
+        {
+            this.nif = nif;
+        }
+
+        /// <summary>
+        /// This function allows to set the client mobile contact
+        /// </summary>
+        /// <param name="contact">New mobile contact</param>
+        public void SetMobileContact(int contact)
+        {
+            mobileContact = contact;
+        }
+
+        /// <summary>
+        /// This function allows to set the client email
+        /// </summary>
+        /// <param name="email">New email</param>
+        public void SetEmail(string email)
+        {
+            this.email = email;
+        }
+
+        /// <summary>
+        /// This function allows ot set the client country
+        /// </summary>
+        /// <param name="country"></param>
+        public void SetCountry(string country)
+        {
+            this.country = country;
+        }
+
+        /// <summary>
+        /// This function allows to set the client credit limit
+        /// </summary>
+        /// <param name="limit"></param>
+        public void SetCreditLimit(double limit)
+        {
+            this.creditLimit = limit;
+        }
+
+        /// <summary>
+        /// This function allows to set the client payment conditions
+        /// </summary>
+        /// <param name="conditions"></param>
+        public void SetPaymentConditions(string conditions)
+        {
+            this.paymentConditions = conditions;
+        }
         #endregion
 
         #region GETTERS

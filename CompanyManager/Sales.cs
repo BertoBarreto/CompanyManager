@@ -1,5 +1,4 @@
 ﻿/// <summary>
-/// Purpose: This class manages the sales of the company
 /// Created By: Roberto Barreto - 21123 || Henrique Cartucho - 21122
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 3/30/2021 11:14:54 AM
@@ -11,7 +10,7 @@ using System.Text;
 namespace CompanyManager
 {
     public class Sales
-    {
+    {/* Fase de testes
         #region PROPERTIES
         FinalItem item;
         Client client;
@@ -24,7 +23,7 @@ namespace CompanyManager
         #endregion
 
         #region CONSTRUCTORS
-
+        
         /// <summary>
         /// Basic Class constructor with no parameters
         /// </summary>
@@ -43,7 +42,7 @@ namespace CompanyManager
             //this.item.ItemId = itemId;
             this.item.Amount = amount;
             this.item.Price = price;
-            client = InformationManager.CreateClient();
+            client = Clients.CreateClient();
         }
 
         /// <summary>
@@ -67,7 +66,7 @@ namespace CompanyManager
         /// </summary>
         public void SetClient()
         {
-            client = InformationManager.CreateClient();
+            client = Clients.CreateClient();
         }
 
         /// <summary>
@@ -99,8 +98,8 @@ namespace CompanyManager
 
             return true;
         }
-
-        #endregion
+        
+#endregion*/
 
     }
 }

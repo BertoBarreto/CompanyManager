@@ -1,5 +1,4 @@
 ﻿/// <summary>
-/// Purpose: 
 /// Created By: Roberto Barreto - 21123 || Henrique Cartucho - 21122
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 4/23/2021 10:23:32 AM
@@ -11,7 +10,7 @@ using System.Text;
 namespace CompanyManager
 {
     /// <summary>
-    /// Purpose: 
+    /// Purpose: This class has all the rules for the PrimaryItem and FinalItem Classes
     /// </summary>
     public interface Iitem
     {

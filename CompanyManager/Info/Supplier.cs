@@ -1,5 +1,4 @@
 ﻿/// <summary>
-/// Purpose: 
 /// Created By: Roberto Barreto - 21123 || Henrique Cartucho - 21122
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 3/30/2021 11:59:25 AM
@@ -10,34 +9,91 @@ using System.Text;
 
 namespace CompanyManager
 {
-
-    public class Supplier : Information
+    /// <summary>
+    /// Purpose: This class has the purpose to manage a supplier information
+    /// </summary>
+    public class Supplier : IInformation
     {
         #region PROPERTIES
+
+        private string name;
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+
+        private string address;
+
+        public string Address
+        {
+            get { return address; }
+        }
+
+        private int nif;
+
+        public int Nif
+        {
+            get { return nif; }
+        }
+
+        private int mobileContact;
+
+        public int MobileContact
+        {
+            get { return mobileContact; }
+        }
+
+        private string email;
+
+        public string Email
+        {
+            get { return email; }
+        }
+
+        private string country;
+
+        public string Country
+        {
+            get { return country; }
+        }
+
         private string paymentConditions;
 
         public string PaymentConditions
         {
             get { return paymentConditions; }
-            set { paymentConditions = value; }
         }
         #endregion
 
+        
         #region CONSTRUCTORS
-
         /// <summary>
-        /// Basic Class constructor with no parameters
+        /// This constructor allows to get all the supplier needed information
         /// </summary>
         public Supplier()
         {
-            Name = null;
-            Address = null;
-            Nif = -1;
-            MobileContact = -1;
-            Email = null;
-            Country = null;
-            paymentConditions = null;
+            Console.Write("\nSupplier Name: ");
+            name = Console.ReadLine();
+
+            Console.Write("\nSupplier Address: ");
+            address = Console.ReadLine();
+
+            nif = DataCheck.TryReadInt("Supplier Nif");
+
+            mobileContact = DataCheck.TryReadInt("Supplier Mobile Contact");
+
+            Console.Write("\nSupplier Email: ");
+            email = Console.ReadLine();
+
+            Console.Write("\nSupplier Country: ");
+            country = Console.ReadLine();
+
+            Console.Write("\nSupplier Payment Conditions: ");
+            paymentConditions = Console.ReadLine();
         }
+
         /// <summary>
         /// Class Constructor with parameters
         /// </summary>
@@ -50,12 +106,12 @@ namespace CompanyManager
         /// <param name="paymentConditions">Supplier payment Conditions</param>
         public Supplier(string Name, string Address, int Nif, int MobileContact, string Email, string Country, string paymentConditions)
         {
-            this.Name = Name;
-            this.Address = Address;
-            this.Nif = Nif;
-            this.MobileContact = MobileContact;
-            this.Email = Email;
-            this.Country = Country;
+            this.name = Name;
+            this.address = Address;
+            this.nif = Nif;
+            this.mobileContact = MobileContact;
+            this.email = Email;
+            this.country = Country;
             this.paymentConditions = paymentConditions;
         }
 
@@ -63,20 +119,71 @@ namespace CompanyManager
 
         #region METHODS
         /// <summary>
-        /// This method overrides the ToString Method of the Client
+        /// This method overrides the ToString Method 
         /// </summary>
         /// <returns>Formated String<returns>
-        public override string ToString() {
+        public override string ToString()
+        {
 
             return string.Format($" Name:{Name}\n Address: {Address}\n Nif:" +
-                $"{Nif}\n Mobile Contact: {MobileContact}\n Email:{Email}\n Country:{Country}"+
-                $"\n Payment conditions: {PaymentConditions}");
+                $"{Nif}\n Mobile Contact: {MobileContact}\n Email:{Email}\n Country:{Country}\n Payment Conditions:{paymentConditions}");
         }
-
-        
 
         #region SETTERS
 
+
+        /// <summary>
+        /// This function allows to set the Supplier name
+        /// </summary>
+        /// <param name="name">New Name</param>
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+        /// <summary>
+        /// This function allows to set the Supplier address
+        /// </summary>
+        /// <param name="address">New Address</param>
+        public void SetAddress(string address)
+        {
+            this.address = address;
+        }
+
+        /// <summary>
+        /// This function allows to set the Supplier nif
+        /// </summary>
+        /// <param name="nif">New Nif</param>
+        public void SetNif(int nif)
+        {
+            this.nif = nif;
+        }
+
+        /// <summary>
+        /// This function allows to set the Supplier mobile contact
+        /// </summary>
+        /// <param name="contact">New mobile contact</param>
+        public void SetMobileContact(int contact)
+        {
+            mobileContact = contact;
+        }
+
+        /// <summary>
+        /// This function allows to set the Supplier email
+        /// </summary>
+        /// <param name="email">New email</param>
+        public void SetEmail(string email)
+        {
+            this.email = email;
+        }
+
+        /// <summary>
+        /// This function allows ot set the Supplier country
+        /// </summary>
+        /// <param name="country"></param>
+        public void SetCountry(string country)
+        {
+            this.country = country;
+        }
         #endregion
 
         #region GETTERS

@@ -1,5 +1,4 @@
 ﻿/// <summary>
-/// Purpose: 
 /// Created By: Roberto Barreto - 21123 || Henrique Cartucho - 21122
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 3/31/2021 2:40:48 PM
@@ -11,7 +10,7 @@ using System.Text;
 namespace CompanyManager
 {
     /// <summary>
-    /// Purpose: 
+    /// Purpose: This class manages all the Company information
     /// </summary>
     public static class Company
     {
@@ -57,30 +56,35 @@ namespace CompanyManager
 
 
         #region METHODS
+        /// <summary>
+        /// This function has the purpose to create a company getting all the necessary information
+        /// </summary>
         public static void CreateCompany()
         {
-                Console.Write("\nCompany Name: ");
-                Name = Console.ReadLine();
+            
+            Console.Write("\nCompany Name: ");
+            Name = Console.ReadLine();
 
-                Console.Write("\nCompany Address: ");
-                Address = Console.ReadLine();
+            
+            Console.Write("\nCompany Address: ");
+            Address = Console.ReadLine();
 
-                Console.WriteLine("\nCompany Nif: ");
-                Nif = Console.Read();
+            Nif = DataCheck.TryReadInt("Company Nif");
+            
+            MobileContact = DataCheck.TryReadInt("Company Mobile Contact");
 
-                Console.WriteLine("\nCompany Mobile Contact");
-                MobileContact = Console.Read();
+            
+            Console.Write("\nCompany Email: ");
+            Email = Console.ReadLine();
 
-                Console.Write("\nCompanyt Email: ");
-                Email = Console.ReadLine();
-
-                Console.Write("\nCompany Country: ");
-                Country = Console.ReadLine();
+            
+            Console.Write("\nCompany Country: ");
+            Country = Console.ReadLine();
             
         }
 
         /// <summary>
-        /// This method returns all comany information
+        /// This method returns all company information
         /// </summary>
         /// <returns>Formated String<returns>
         public static string GetCompanyInfo()
