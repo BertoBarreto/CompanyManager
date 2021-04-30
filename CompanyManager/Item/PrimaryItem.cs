@@ -22,21 +22,17 @@ namespace CompanyManager
 
         public int Id
         {
-            //to remove
-            set { id = value; }
             get { return id; }
         }
 
         public double Amount
         {
             get { return amount; }
-            set { amount = value; }
         }
 
         public string ItemName
         {
             get { return itemName; }
-            set { itemName = value; }
         }
 
         #endregion
@@ -49,9 +45,9 @@ namespace CompanyManager
         /// <param name="itemId">Item id</param>
         /// <param name="amount">Amount of item in stock</param>
         /// <param name="itemName">Item name</param>
-        public PrimaryItem(int itemId, double amount,string itemName)
+        public PrimaryItem(double amount,string itemName)
         {
-            this.id = itemId;
+            this.id = Stock.GetPrimaryNextId();
             this.amount = amount;
             this.itemName = itemName;
         }
@@ -59,7 +55,10 @@ namespace CompanyManager
 
         #region METHODS
 
-
+        /// <summary>
+        /// This method allows to turn this item into a string
+        /// </summary>
+        /// <returns>String -> formated string with item information</returns>
         public override string ToString()
         {
             return string.Format($"\nItem: {itemName}\nId: {id}\nAmount: {amount}");
@@ -94,21 +93,6 @@ namespace CompanyManager
         #endregion
 
         #region GETTERS
-        /// <summary>
-        /// This function checks if a item isnt null
-        /// </summary>
-        /// <param name="item">Item to check</param>
-        /// <returns>True/False</returns>
-        public bool IsNull()
-        {
-            if (itemName == null)
-                return false;
-            if (id < 0)
-                return false;
-            if (amount < 0)
-                return false;
-            return true;
-        }
         #endregion
 
         #endregion
