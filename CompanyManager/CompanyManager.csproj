@@ -49,7 +49,6 @@
     <Compile Include="Info\Suppliers.cs" />
     <Compile Include="Item\FinalItem.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="Stock\FinalStock.cs" />
     <Compile Include="Info\Information.cs" />
     <Compile Include="Info\InformationManager.cs" />
     <Compile Include="Item\Iitem.cs" />
@@ -62,7 +61,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Sales.cs" />
-    <Compile Include="Stock\PrimaryStock.cs" />
+    <Compile Include="Stock\Stock.cs" />
     <Compile Include="Info\Supplier.cs" />
   </ItemGroup>
   <ItemGroup>

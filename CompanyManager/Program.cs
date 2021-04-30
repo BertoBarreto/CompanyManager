@@ -42,27 +42,27 @@ namespace CompanyManager
 
             //Company company = InformationManager.CreateCompany();
 
-            PrimaryItem Pitem1 = new PrimaryItem(1, 33, "Farinha");
-            PrimaryItem Pitem2 = new PrimaryItem(2, 10, "Areia");
-            PrimaryItem Pitem3 = new PrimaryItem(3, 2, "Silica");
-            PrimaryItem Pitem4 = new PrimaryItem(4, 1, "Tecido");
-            PrimaryItem Pitem5 = new PrimaryItem(5, 50, "Fio");
-            PrimaryStock.AddItem(Pitem1);
-            PrimaryStock.AddItem(Pitem2);
-            PrimaryStock.AddItem(Pitem3);
-            PrimaryStock.AddItem(Pitem4);
-            PrimaryStock.AddItem(Pitem5);
+            PrimaryItem Pitem1 = new PrimaryItem(33, "Farinha");
+            PrimaryItem Pitem2 = new PrimaryItem(10, "Areia");
+            PrimaryItem Pitem3 = new PrimaryItem(2, "Silica");
+            PrimaryItem Pitem4 = new PrimaryItem(1, "Tecido");
+            PrimaryItem Pitem5 = new PrimaryItem(50, "Fio");
+            Stock.AddItem(Pitem1);
+            Stock.AddItem(Pitem2);
+            Stock.AddItem(Pitem3);
+            Stock.AddItem(Pitem4);
+            Stock.AddItem(Pitem5);
 
-            FinalItem item1 = new FinalItem(35,1, "Atum", 33);
-            FinalItem item2 = new FinalItem(35, 2, "Pc", 10);
-            FinalItem item3 = new FinalItem(35, 3, "telemovel", 2);
-            FinalItem item4 = new FinalItem(35, 4, "teste", 1);
-            FinalItem item5 = new FinalItem(35, 5, "dinheiro", 50);
-            FinalStock.AddItem(item1);
-            FinalStock.AddItem(item2);
-            FinalStock.AddItem(item3);
-            FinalStock.AddItem(item4);
-            FinalStock.AddItem(item5);
+            FinalItem item1 = new FinalItem(35,1, "Atum");
+            FinalItem item2 = new FinalItem(35, 2, "Pc");
+            FinalItem item3 = new FinalItem(35, 3, "telemovel");
+            FinalItem item4 = new FinalItem(35, 4, "teste");
+            FinalItem item5 = new FinalItem(35, 5, "dinheiro");
+            Stock.AddItem(item1);
+            Stock.AddItem(item2);
+            Stock.AddItem(item3);
+            Stock.AddItem(item4);
+            Stock.AddItem(item5);
 
             Console.WriteLine("***************Suppliers***************");
             Suppliers.ListSuppliers();
@@ -71,12 +71,12 @@ namespace CompanyManager
             /*Console.WriteLine("****************Company****************");
             InformationManager.List(company);*/
             Console.WriteLine("*************Primary Stock*****************");
-            PrimaryStock.GetStock();
-            PrimaryStock.GetItem(2);
+            Stock.GetPrimaryStock();
+            Stock.GetPrimaryItem(2);
 
             Console.WriteLine("**************Final Stock******************");
-            FinalStock.GetStock();
-            FinalStock.GetItem(2);
+            Stock.GetFinalStock();
+            Stock.GetFinalItem(2);
 
             Menu.OpenMenu();
             Console.ReadKey();

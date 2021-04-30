@@ -15,8 +15,8 @@ namespace CompanyManager
     /// </summary>
     public interface Iitem
     {
-        int Id { get; set; }
-        string ItemName { get; set; }
+        int Id { get; }
+        string ItemName { get; }
         double Amount { get; }
 
         void RemoveAmount(double amount);

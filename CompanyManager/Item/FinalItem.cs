@@ -19,15 +19,21 @@ namespace CompanyManager
         public double Price
         {
             get { return price; }
-            set { price = value; }
         }
 
 
         #endregion
 
         #region CONSTRUCTORS
-        public FinalItem(double price, int itemId, string itemName, double amount) : base(itemId, amount, itemName)
+        /// <summary>
+        /// Basic constructo of FinalItem class
+        /// </summary>
+        /// <param name="price">Item price</param>
+        /// <param name="amount">Item amount</param>
+        /// <param name="itemName">Item name</param>
+        public FinalItem(double price, double amount, string itemName) : base(amount, itemName)
         {
+
             this.price = price;
         }
 
@@ -50,6 +56,14 @@ namespace CompanyManager
 
 
         #region SETTERS
+        /// <summary>
+        /// This method allows to edit the product price
+        /// </summary>
+        /// <param name="price">New price</param>
+        public void EditPrice(double price)
+        {
+            this.price = price;
+        }
         #endregion
 
         #region GETTERS
