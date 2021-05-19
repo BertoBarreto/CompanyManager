@@ -33,5 +33,16 @@ namespace CompanyManager.Properties {
                 return ((string)(this["CompanyManagerDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-BQJ5871\\COMPANYMNGSQL;Initial Catalog=CompanyManagerDB;Persis" +
+            "t Security Info=True;User ID=sa;Password=r0b3rt012@")]
+        public string CompanyManagerDBConnectionString1 {
+            get {
+                return ((string)(this["CompanyManagerDBConnectionString1"]));
+            }
+        }
     }
 }
