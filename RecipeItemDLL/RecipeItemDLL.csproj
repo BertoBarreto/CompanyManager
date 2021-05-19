@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="DataCheckDLL">
+      <HintPath>..\DataCheckDLL\bin\Debug\netcoreapp3.1\DataCheckDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="PrimaryStockDLL">
+      <HintPath>..\PrimaryStockDLL\obj\Debug\netcoreapp3.1\PrimaryStockDLL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
