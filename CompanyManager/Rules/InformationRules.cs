@@ -21,7 +21,7 @@ namespace CompanyManager.Rules
         /// </summary>
         public static void AddNewClient()
         {
-            Client client = new Client();
+            Data.Information.Client client = new Data.Information.Client();
             Clients.AddClient(client);
 
         }

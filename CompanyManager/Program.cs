@@ -1,4 +1,7 @@
 ﻿using System;
+using CompanyManager.Rules;
+
+using CompanyManager.FronEnd;
 /*
  * SQL Name: COMPANYMNGSQL
  * String: CompanyManagerDBConnectionString1
@@ -7,9 +10,13 @@
 namespace CompanyManager
 {
     static class Program
-    {  
+    {
+        
         static void Main(string[] args)
         {
+            DataBase.StartConnection();
+            Client roberto = new Client("Roberto Barreto", "Rua da esquina Nº 3", 12345, 969494105, "robertocontato@geral.pt", "Portugal", "60 dias", 50000);
+            DataBase.InsertClient(roberto);
             //Company.CreateCompany();
             //Console.WriteLine("Here");
 

@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CompanyManager.Rules;
 
 namespace CompanyManager.Data.Items
 {
@@ -82,6 +83,8 @@ namespace CompanyManager.Data.Items
                     Console.WriteLine(r);
                 }
             }
+            else
+                DataRules.ErrorMsg("There isnt any recipe for that FinalItem");
 
         }
 
@@ -133,7 +136,8 @@ namespace CompanyManager.Data.Items
                     return;
                 }
 
-            }
+            }else
+                DataRules.ErrorMsg("There isnt any recipe for that FinalItem");
         
 
 
