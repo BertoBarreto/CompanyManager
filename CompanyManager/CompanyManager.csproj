@@ -75,17 +75,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CompanyManagerDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\Information\Client.cs" />
     <Compile Include="Data\Information\Clients.cs" />
-    <Compile Include="Data\Information\Company.cs" />
-    <Compile Include="Data\DataCheck.cs" />
-    <Compile Include="Data\Items\FinalItem.cs" />
     <Compile Include="Data\Items\FinalStock.cs" />
-    <Compile Include="Data\Information\IInformation.cs" />
-    <Compile Include="Data\Items\IItem.cs" />
-    <Compile Include="Data\Items\PrimaryItem.cs" />
     <Compile Include="Data\Items\PrimaryStock.cs" />
-    <Compile Include="Data\Items\RecipeItem.cs" />
     <Compile Include="Data\Items\Recipes.cs" />
     <Compile Include="LinqToSqlDataClasses.designer.cs">
       <AutoGen>True</AutoGen>
@@ -95,7 +87,6 @@
     <Compile Include="Rules\DataBase.cs" />
     <Compile Include="Rules\DataRules.cs" />
     <Compile Include="Rules\InformationRules.cs" />
-    <Compile Include="Data\Information\Supplier.cs" />
     <Compile Include="Data\Information\Suppliers.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="FrontEnd\Menu.cs" />
@@ -107,7 +98,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Rules\ItemsRules.cs" />
-    <Compile Include="Sales.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

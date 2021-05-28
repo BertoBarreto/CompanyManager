@@ -7,6 +7,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+using CompanyManager.Rules;
 
 namespace CompanyManager.Data.Information
 {
@@ -45,17 +47,73 @@ namespace CompanyManager.Data.Information
             clients.Add(client);
         }
 
-        public static void SearchClient(string name)
+        /// <summary>
+        /// This method allows to search for a client by its name
+        /// </summary>
+        /// <param name="name">Client Name</param>
+        /// <returns>bool</returns>
+        public static bool SearchClient(string name)
         {
             foreach (Client c in clients)
             {
                 if (c.Name == name)
+                {
                     Console.WriteLine($"\n{c}");
+                    return true;
+                }
             }
+            return false;
+        }
+
+        /// <summary>
+        /// This method allows to search for a client by its id
+        /// </summary>
+        /// <param name="name">Client Name</param>
+        /// <returns>bool</returns>
+        public static bool SearchClient(int id)
+        {
+            foreach (Client c in clients)
+            {
+                if (c.Id == id)
+                {
+                    Console.WriteLine($"\n{c}");
+                    return true;
+                }
+            }
+            return false;
         }
         #endregion
 
+        /// <summary>
+        /// This method allows so save Clients data
+        /// </summary>
+        public static void SaveClients()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CompanyManager\Data\Information";
+             
+            try
+            {
+                StringBuilder sb = new StringBuilder();
 
+                foreach (Client client in clients)
+                {
+
+                    sb.AppendFormat($"{client.Id},{client.Name},{client.MobileContact},{client.Nif},{client.Address},{client.Country},{client.CreditLimit},{client.Email},{client.PaymentConditions},");
+                    sb.Remove(sb.Length - 1, 1);
+                    sb.AppendLine();
+                }
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                File.WriteAllText(path + @"\clients.csv", sb.ToString(), Encoding.UTF8);
+
+
+            }
+            catch
+            {
+                DataRules.ErrorMsg("Error saving in the data file");
+            }
+        }
 
         #endregion
 

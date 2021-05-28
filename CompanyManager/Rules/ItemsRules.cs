@@ -30,11 +30,12 @@ namespace CompanyManager.Rules
         /// <summary>
         /// This method allows to create a primary item and add it to the primary stock
         /// </summary>
-        /// <param name="itemName">Primary item name</param>
-        /// <param name="amount">Primary item amount</param>
-        public static void AddPrimaryItem(string itemName, double amount)
+        public static void AddPrimaryItem()
         {
-            PrimaryItem item = new PrimaryItem(amount, itemName, PrimaryStock.GetNextId());
+            Console.WriteLine("Item Name:");
+            string itemName = Console.ReadLine();
+            double amount = DataRules.GetDouble("Amount: ");
+            PrimaryItem item = new PrimaryItem(amount, itemName);
             PrimaryStock.AddItem(item);
         }
 
@@ -44,6 +45,13 @@ namespace CompanyManager.Rules
         public static void GetPrimaryitem()
         {
             PrimaryStock.GetItem(DataRules.GetInt("Item id: "));
+        }
+        /// <summary>
+        /// This method allows to get information about a primary item in stock
+        /// </summary>
+        public static void GetPrimaryitem(int id)
+        {
+            PrimaryStock.GetItem(id);
         }
 
         #endregion
@@ -61,12 +69,14 @@ namespace CompanyManager.Rules
         /// <summary>
         /// This method allows to create a primary item and add it to the primary stock
         /// </summary>
-        /// <param name="itemName">Primary item name</param>
-        /// <param name="amount">Primary item amount</param>
-        public static void AddFinalItem(string itemName, double amount, double price)
+        public static void AddFinalItem()
         {
-            FinalItem item = new FinalItem(price, amount, itemName, FinalStock.GetNextId());
-            FinalStock.AddItem(item);
+            Console.WriteLine("Item Name:");
+            string itemName = Console.ReadLine();
+            double amount = DataRules.GetDouble("Amount: ");
+            double price = DataRules.GetDouble("Price: ");
+            FinalItem item = new FinalItem(price, amount, itemName);
+            DataBase.InsertFinalItem(item);
         }
 
         /// <summary>
@@ -82,9 +92,9 @@ namespace CompanyManager.Rules
         /// <summary>
         /// This method allows to get a recipe
         /// </summary>
-        /// <param name="id">Final Item id</param>
-        public static void GetRecipe(int id)
+        public static void GetRecipe()
         {
+            int id = DataRules.GetInt("Item id: ");
             Recipes.GetRecipe(id);
         }
 
@@ -99,21 +109,58 @@ namespace CompanyManager.Rules
         /// <summary>
         /// This method allows to add a recipe
         /// </summary>
-        /// <param name="id">Final item id</param>
-        public static void AddRecipe(int id)
+        public static void AddRecipe()
         {
-            FinalStock.GetItem(id);
-            Recipes.AddRecipe(id);
-            Recipes.GetRecipe(id);
+            int fId, pId;
+            double amount;
+            List<RecipeItem> lst = new List<RecipeItem>();
+            fId = DataRules.GetFinalItemId("Final item id: ");
+            string decision;
+            do
+            {
+
+                pId = DataRules.GetPrimaryItemId("Primary item id: ");
+
+
+                amount = DataRules.GetDouble("Amount: ");
+
+                RecipeItem i = new RecipeItem(amount, fId, pId);
+
+                if (!Recipes.Contains(i))
+                    lst.Add(i);
+                else
+                    DataRules.ErrorMsg("This Recipe Already Has this item");
+
+                do
+                {
+                    Console.WriteLine("Do you wish to add more items?[Yes/No]");
+                    decision = Console.ReadLine();
+
+                } while (decision.ToLower() != "yes" && decision.ToLower() != "no");
+
+            } while (decision.ToLower() == "yes");
+            foreach (RecipeItem i in lst)
+            {
+                DataBase.InsertRecipeItem(i);
+            }
         }
 
         /// <summary>
         /// This method allows to Check if a recipe can be made
         /// </summary>
-        /// <param name="id">Final item id</param>
-        public static void RecipeCanBeMade(int id)
+        public static void RecipeCanBeMade()
         {
+            int id = DataRules.GetFinalItemId("Final item id: ");
             Recipes.CanBeMade(id);
+        }
+
+        /// <summary>
+        /// This method allows to get all the recipes that can be made
+        /// </summary>
+        public static void RecipesCanBeMade()
+        {
+            Recipes.RecipesCanBeMade();
+            
         }
         #endregion
 
