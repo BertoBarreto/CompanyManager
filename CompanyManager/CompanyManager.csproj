@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -74,22 +75,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CompanyManagerDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\Information\Client.cs" />
     <Compile Include="Data\Information\Clients.cs" />
-    <Compile Include="Data\Information\Company.cs" />
-    <Compile Include="Data\DataCheck.cs" />
-    <Compile Include="Data\Items\FinalItem.cs" />
     <Compile Include="Data\Items\FinalStock.cs" />
-    <Compile Include="Data\Information\IInformation.cs" />
-    <Compile Include="Data\Items\IItem.cs" />
-    <Compile Include="Data\Items\PrimaryItem.cs" />
     <Compile Include="Data\Items\PrimaryStock.cs" />
-    <Compile Include="Data\Items\RecipeItem.cs" />
     <Compile Include="Data\Items\Recipes.cs" />
+    <Compile Include="LinqToSqlDataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinqToSqlDataClasses.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Rules\DataBase.cs" />
     <Compile Include="Rules\DataRules.cs" />
     <Compile Include="Rules\InformationRules.cs" />
-    <Compile Include="Data\Information\Supplier.cs" />
     <Compile Include="Data\Information\Suppliers.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="FrontEnd\Menu.cs" />
@@ -101,7 +98,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Rules\ItemsRules.cs" />
-    <Compile Include="Sales.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -117,12 +113,22 @@
     <None Include="CompanyManagerDBDataSet.xss">
       <DependentUpon>CompanyManagerDBDataSet.xsd</DependentUpon>
     </None>
+    <None Include="LinqToSqlDataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>LinqToSqlDataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinqToSqlDataClasses.dbml.layout">
+      <DependentUpon>LinqToSqlDataClasses.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

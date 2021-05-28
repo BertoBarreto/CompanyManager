@@ -7,7 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using CompanyManager.Data;
+using CompanyManager.Data.Items;
 
 namespace CompanyManager.Rules
 {
@@ -17,46 +17,117 @@ namespace CompanyManager.Rules
     public class DataRules
     {
         #region DATACHECK
+        #region METHODS
         /// <summary>
-        /// This method allows to get a integer
+        /// This Function allows to read an int, allowing only int values to be stored
         /// </summary>
-        /// <param name="msg">Message to write</param>
-        /// <returns>Int</returns>
+        /// <param name="msg">The message to show to the user to ask for the input</param>
+        /// <returns>Int -> value read</returns>
         public static int GetInt(string msg)
         {
-            return DataCheck.TryReadInt(msg);
+            int info;
+
+            Console.Write(msg);
+
+            bool tryInfo = int.TryParse(Console.ReadLine(), out info);
+
+            while (!tryInfo)
+            {
+                ErrorMsg("Not a valid Number!");
+                Console.WriteLine(msg);
+                tryInfo = int.TryParse(Console.ReadLine(), out info);
+            }
+            return info;
+
         }
 
         /// <summary>
-        /// This method allows to get a double
+        /// This Function allows to read a double, allowing only double values to be stored
         /// </summary>
-        /// <param name="msg">Message to write</param>
-        /// <returns>double</returns>
+        /// <param name="msg">The message to show to the user to ask for the input</param>
+        /// <returns>Double -> value read</returns>
         public static double GetDouble(string msg)
         {
-            return DataCheck.TryReadDouble(msg);
+            double info;
+
+            Console.Write(msg);
+
+            bool tryInfo = double.TryParse(Console.ReadLine(), out info);
+
+            while (!tryInfo)
+            {
+                ErrorMsg("Not a valid Number!");
+                Console.Write(msg);
+                tryInfo = double.TryParse(Console.ReadLine(), out info);
+            }
+            return info;
+
         }
 
-
         /// <summary>
-        /// This method allows to get a primary item id
+        /// This Function allows to read an int and a primary stock item, allowing only id's of items that exist to be stored
         /// </summary>
-        /// <param name="msg">Message to write</param>
-        /// <returns>Int -> id</returns>
+        /// <param name="msg">The message to show to the user to ask for the input</param>
+        /// <returns>Int -> id read</returns>
         public static int GetPrimaryItemId(string msg)
         {
-            return DataCheck.TryReadPrimaryItemId(msg);
+            int info;
+            bool exists = true;
+            Console.Write(msg);
+
+            bool tryInfo = int.TryParse(Console.ReadLine(), out info);
+
+            while (!tryInfo || !exists)
+            {
+                if (!exists)
+                    ErrorMsg("Not a valid Number!");
+
+                exists = true;
+                Console.Write(msg);
+                tryInfo = int.TryParse(Console.ReadLine(), out info);
+                if (tryInfo)
+                {
+                    if (!PrimaryStock.GetItem(info))
+                    {
+                        ErrorMsg("Item doesnt Exist");
+                        exists = false;
+                    }
+                }
+            }
+            return info;
+
         }
 
         /// <summary>
-        /// This method allows to get a final item id
+        /// This Function allows to read an int and a primary stock item, allowing only id's of items that exist to be stored
         /// </summary>
-        /// <param name="msg">Message to write</param>
-        /// <returns>Int -> id</returns>
+        /// <param name="msg">The message to show to the user to ask for the input</param>
+        /// <returns>Int -> id read</returns>
         public static int GetFinalItemId(string msg)
         {
-            return DataCheck.TryReadFinalItemId(msg);
+            int info;
+            bool exists = true;
+
+            Console.Write(msg);
+
+            bool tryInfo = int.TryParse(Console.ReadLine(), out info);
+
+            while (!tryInfo || !exists)
+            {
+                if (exists)
+                    ErrorMsg("Not a valid Number!");
+                exists = true;
+                Console.WriteLine($"{msg} ");
+                tryInfo = int.TryParse(Console.ReadLine(), out info);
+                if (tryInfo && !FinalStock.GetItem(info))
+                {
+                    exists = false;
+                }
+            }
+            return info;
+
         }
+
 
         /// <summary>
         /// This method allows to print a error message to the user in red
@@ -64,8 +135,11 @@ namespace CompanyManager.Rules
         /// <param name="msg">Message to print</param>
         public static void ErrorMsg(string msg)
         {
-            DataCheck.ErrorMsg(msg);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{msg}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
+        #endregion
         #endregion
 
     }

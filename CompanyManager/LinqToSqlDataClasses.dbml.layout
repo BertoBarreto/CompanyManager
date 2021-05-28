@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.875, 8.5" name="LinqToSqlDataClasses">
+  <DataContextMoniker Name="/LinqToSqlDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3d5ad862-3c0e-498e-844d-f16db177cdc0" absoluteBounds="1, 0.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LinqToSqlDataClassesDataContext/Client" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3bbd727-53a7-4383-ae38-f1336a3e9c37" absoluteBounds="1.0149999999999997, 1.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="072bd757-b1ec-4fd4-9cd0-46ea6d9633c3" absoluteBounds="5.25, 0.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/LinqToSqlDataClassesDataContext/Company" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef85b784-ac02-49bf-938b-f50b959843fc" absoluteBounds="5.2650000000000006, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c607442-a19b-4a06-89d8-ab25eb3a106e" absoluteBounds="3.125, 0.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/LinqToSqlDataClassesDataContext/Supplier" />
+      <nestedChildShapes>
+        <elementListCompartment Id="21fb0c98-aae3-4d7e-a0fa-8baf5127fd8f" absoluteBounds="3.1399999999999997, 1.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e8162fc0-69dc-43c8-aa2f-73c8e4f4478b" absoluteBounds="7.375, 0.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/LinqToSqlDataClassesDataContext/PrimaryItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="06cc8081-7a61-4722-8ab9-584c84b649f4" absoluteBounds="7.3900000000000006, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d6179b1e-97d7-429c-b8ce-017b23b3b707" absoluteBounds="7.375, 2.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LinqToSqlDataClassesDataContext/FinalItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df80df8f-ce20-44aa-97ea-16b624a677f0" absoluteBounds="7.3900000000000006, 2.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7c3cd9cd-ea9c-4a6f-a4e8-e55240f52af2" absoluteBounds="10.625, 1.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LinqToSqlDataClassesDataContext/RecipeItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c51a66e2-d668-411a-8475-64bc2e5ca570" absoluteBounds="10.64, 2.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.375 : 2.91429768880208); (10.625 : 2.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinqToSqlDataClassesDataContext/FinalItem/FinalItem_RecipeItem" />
+      <nodes>
+        <classShapeMoniker Id="d6179b1e-97d7-429c-b8ce-017b23b3b707" />
+        <classShapeMoniker Id="7c3cd9cd-ea9c-4a6f-a4e8-e55240f52af2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.375 : 2.00564697265625); (10.625 : 2.00564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinqToSqlDataClassesDataContext/PrimaryItem/PrimaryItem_RecipeItem" />
+      <nodes>
+        <classShapeMoniker Id="e8162fc0-69dc-43c8-aa2f-73c8e4f4478b" />
+        <classShapeMoniker Id="7c3cd9cd-ea9c-4a6f-a4e8-e55240f52af2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

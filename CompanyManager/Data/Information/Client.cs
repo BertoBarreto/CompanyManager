@@ -120,7 +120,7 @@ namespace CompanyManager.Data.Information
         #region METHODS
 
         #region SETTERS
-
+        
         /// <summary>
         /// This function allows to set the client name
         /// </summary>

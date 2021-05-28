@@ -4,8 +4,10 @@
 /// Email: a21123@alunos.ipca.pt || a21122@alunos.ipca.pt
 /// Created On: 5/18/2021 7:11:21 PM
 /// </summary>
+using CompanyManager.Rules;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CompanyManager.Data.Items
@@ -99,12 +101,43 @@ namespace CompanyManager.Data.Items
         /// <returns>bool</returns>
         public static bool HasEnough(double amount, int itemId)
         {
+            
             if (GetStock(itemId) >= amount)
                 return true;
 
             return false;
         }
         #endregion
+        /// <summary>
+        /// This method allows so save PrimaryStock data
+        /// </summary>
+        public static void SavePrimaryStock()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CompanyManager\Data\Items";
+             
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (PrimaryItem primaryItem in stock)
+                {
+
+                    sb.AppendFormat($"{primaryItem.Id},{primaryItem.Name},{primaryItem.Amount},");
+                    sb.Remove(sb.Length - 1, 1);
+                    sb.AppendLine();
+                }
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                File.WriteAllText(path + @"\PrimaryStock.csv", sb.ToString(), Encoding.UTF8);
+
+
+            }
+            catch
+            {
+                DataRules.ErrorMsg("Error saving in the data file");
+            }
+        }
         #endregion
 
     }

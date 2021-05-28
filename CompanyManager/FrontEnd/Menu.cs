@@ -75,11 +75,14 @@ namespace CompanyManager.FronEnd
                 Console.WriteLine("** Add Information            **");
                 Console.WriteLine("**  1 - New client            **");
                 Console.WriteLine("**  2 - New Supplier          **");
-                Console.WriteLine("** Get IInformation           **");
-                Console.WriteLine("**  3 - Company Information   **");
-                Console.WriteLine("**  4 - Client Information    **");
-                Console.WriteLine("**  5 - Supplier Information  **");
-                Console.WriteLine("**  0 - Exit                  **");
+                Console.WriteLine("** Add Information            **");
+                Console.WriteLine("**  3 - Edit client           **");
+                Console.WriteLine("**  4 - Edit Supplier         **");
+                Console.WriteLine("** Get Information            **");
+                Console.WriteLine("**  5 - Company Information   **");
+                Console.WriteLine("**  6 - Client Information    **");
+                Console.WriteLine("**  7 - Supplier Information  **");
+                Console.WriteLine("**  0 - Back                  **");
                 Console.WriteLine("********************************");
                 choice = DataRules.GetInt("Option: ");
                 switch (choice)
@@ -91,12 +94,18 @@ namespace CompanyManager.FronEnd
                         InformationRules.AddNewSupplier();
                         break;
                     case 3:
-                        InformationRules.GetCompanyInfo();
+                        ClientMenu();
                         break;
                     case 4:
-                        InformationRules.SearchClient();
+                        SupplierMenu();
                         break;
                     case 5:
+                        InformationRules.GetCompanyInfo();
+                        break;
+                    case 6:
+                        InformationRules.SearchClient();
+                        break;
+                    case 7:
                         InformationRules.SearchSupplier();
                         break;
                     case 0: return;
@@ -105,6 +114,110 @@ namespace CompanyManager.FronEnd
             }
 
             
+        }
+
+        /// <summary>
+        /// This method allows to show the clients edit menu
+        /// </summary>
+        public static void ClientMenu()
+        {
+            while (choice >= 0)
+            {
+                Console.WriteLine("********************************");
+                Console.WriteLine("**  1 - Name                  **");
+                Console.WriteLine("**  2 - Address               **");
+                Console.WriteLine("**  3 - Nif                   **");
+                Console.WriteLine("**  4 - Mobile Contact        **");
+                Console.WriteLine("**  5 - Email                 **");
+                Console.WriteLine("**  6 - Country               **");
+                Console.WriteLine("**  7 - Credit limit          **");
+                Console.WriteLine("**  8 - Payment Conditions    **");
+                Console.WriteLine("**  0 - Back                  **");
+                Console.WriteLine("********************************");
+                choice = DataRules.GetInt("Option: ");
+                switch (choice)
+                {
+                    case 1:
+                        InformationRules.ChangeClientName();
+                        break;
+                    case 2:
+                        InformationRules.ChangeClientAddress();
+                        break;
+                    case 3:
+                        InformationRules.ChangeClientNif();
+                        break;
+                    case 4:
+                        InformationRules.ChangeClientMobileContact();
+                        break;
+                    case 5:
+                        InformationRules.ChangeClientEmail();
+                        break;
+                    case 6:
+                        InformationRules.ChangeClientCountry();
+                        break;
+                    case 7:
+                        InformationRules.ChangeClientCreditLimit();
+                        break;
+                    case 8:
+                        InformationRules.ChangeClientPaymentConditions();
+                        break;
+                    case 0: return;
+                    default: DataRules.ErrorMsg("Thats not a valid option!"); break;
+                }
+            }
+
+
+        }
+
+        /// <summary>
+        /// This method allows to show the suppliers edit menu
+        /// </summary>
+        public static void SupplierMenu()
+        {
+            while (choice >= 0)
+            {
+                Console.WriteLine("********************************");
+                Console.WriteLine("**  1 - Name                  **");
+                Console.WriteLine("**  2 - Address               **");
+                Console.WriteLine("**  3 - Nif                   **");
+                Console.WriteLine("**  4 - Mobile Contact        **");
+                Console.WriteLine("**  5 - Email                 **");
+                Console.WriteLine("**  6 - Country               **");
+                Console.WriteLine("**  7 - Credit limit          **");
+                Console.WriteLine("**  8 - Payment Conditions    **");
+                Console.WriteLine("**  0 - Back                  **");
+                Console.WriteLine("********************************");
+                choice = DataRules.GetInt("Option: ");
+                switch (choice)
+                {
+                    case 1:
+                        InformationRules.ChangeSupplierName();
+                        break;
+                    case 2:
+                        InformationRules.ChangeSupplierAddress();
+                        break;
+                    case 3:
+                        InformationRules.ChangeSupplierNif();
+                        break;
+                    case 4:
+                        InformationRules.ChangeSupplierMobileContact();
+                        break;
+                    case 5:
+                        InformationRules.ChangeSupplierEmail();
+                        break;
+                    case 6:
+                        InformationRules.ChangeSupplierCountry();
+                        break;
+                    
+                    case 8:
+                        InformationRules.ChangeSupplierPaymentConditions();
+                        break;
+                    case 0: return;
+                    default: DataRules.ErrorMsg("Thats not a valid option!"); break;
+                }
+            }
+
+
         }
 
         /// <summary>
@@ -119,7 +232,7 @@ namespace CompanyManager.FronEnd
                 Console.WriteLine("**    1 - Get Stock  **");
                 Console.WriteLine("**    2 - Add Stock  **");
                 Console.WriteLine("**    3 - Get Item   **");
-                Console.WriteLine("**    0 - Exit       **");
+                Console.WriteLine("**    0 - Back       **");
                 Console.WriteLine("***********************");
                 choice = DataRules.GetInt("Option: ");
                 switch (choice)
@@ -128,10 +241,8 @@ namespace CompanyManager.FronEnd
                         ItemsRules.GetPrimaryStock();
                         break;
                     case 2:
-                        Console.WriteLine("Item Name:");
-                        string itemName = Console.ReadLine();
-                        double amount = DataRules.GetDouble("Amount: ");
-                        ItemsRules.AddPrimaryItem(itemName, amount);
+
+                        ItemsRules.AddPrimaryItem();
                         break;
                     case 3:
                         ItemsRules.GetPrimaryitem();
@@ -140,6 +251,7 @@ namespace CompanyManager.FronEnd
                 }
             }
         }
+
 
         /// <summary>
         /// Final Stock management menu 
@@ -153,7 +265,7 @@ namespace CompanyManager.FronEnd
                 Console.WriteLine("**    1 - Get Stock  **");
                 Console.WriteLine("**    2 - Add Stock  **");
                 Console.WriteLine("**    3 - Get Item   **");
-                Console.WriteLine("**    0 - Exit       **");
+                Console.WriteLine("**    0 - Back       **");
                 Console.WriteLine("***********************");
                 choice = DataRules.GetInt("Option: ");
                 switch (choice)
@@ -162,11 +274,8 @@ namespace CompanyManager.FronEnd
                         ItemsRules.GetFinalStock();
                         break;
                     case 2:
-                        Console.WriteLine("Item Name:");
-                        string itemName = Console.ReadLine();
-                        double amount = DataRules.GetDouble("Amount: ");
-                        double price = DataRules.GetDouble("Price: ");
-                        ItemsRules.AddFinalItem(itemName, amount, price);
+
+                        ItemsRules.AddFinalItem();
                         break;
                     case 3:
                         ItemsRules.GetFinalitem();
@@ -182,7 +291,6 @@ namespace CompanyManager.FronEnd
         /// </summary>
         public static void RecipeMenu()
         {
-
             while (choice >= 0)
             {
                 Console.WriteLine("***************************************");
@@ -192,32 +300,29 @@ namespace CompanyManager.FronEnd
                 Console.WriteLine("**    3 - Add Recipe                 **");
                 Console.WriteLine("**    4 - Recipes that can be made   **");
                 Console.WriteLine("**    5 - Check item can be made     **");
-                Console.WriteLine("**    0 - Exit                       **");
+                Console.WriteLine("**    0 - Back                       **");
                 Console.WriteLine("***************************************");
                 choice = DataRules.GetInt("Option: ");
                 switch (choice)
                 {
                     case 1:
-                        id = DataRules.GetInt("Item id: ");
-                        ItemsRules.GetRecipe(id);
+                        ItemsRules.GetRecipe();
                         break;
                     case 2:
                         ItemsRules.GetRecipes();
                         break;
                     case 3:
-
-                        //wich item has this recipe
-                        id = DataRules.GetFinalItemId("Final item id: ");
-                        ItemsRules.AddRecipe(id);
+                        ItemsRules.AddRecipe();
                         break;
                     case 4:
-                        //needs some things , talk to the teacher about how to aproach this method
-
-                        //Recipes.RecipesCanBeMade();
+                        ItemsRules.RecipesCanBeMade();
+                        //fazer com que diga a quantidade que é possivel fazer
+                        //não está a fazer o seu trabalho
                         break;
                     case 5:
-                        id = DataRules.GetFinalItemId("Final item id: ");
-                        ItemsRules.RecipeCanBeMade(id);
+                        ItemsRules.RecipeCanBeMade();
+                        //fazer com que diga a quantidade que é possivel fazer
+                        //não está a fazer o seu trabalho
                         break;
                     case 0: return;
                     default: DataRules.ErrorMsg("Thats not a valid option!"); break;

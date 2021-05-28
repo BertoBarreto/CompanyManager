@@ -6,7 +6,10 @@
 /// </summary>
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
+using CompanyManager.Rules;
+using System.IO;
 
 namespace CompanyManager.Data.Items
 {
@@ -21,8 +24,15 @@ namespace CompanyManager.Data.Items
 
 
         #region METHODS
-
+        public static void save()
+        {
+            CompanyManager.FileManager.SaveRecipe(recipes);
+        }
         #region SETTERS
+        /// <summary>
+        /// This method allows to create and add a recipe item to the recipes Dictionary asking for all the requirements
+        /// </summary>
+        /// <param name="id">Final Item id</param>
         public static void AddRecipe(int id)
         {
             if (recipes.ContainsKey(id))
@@ -42,7 +52,22 @@ namespace CompanyManager.Data.Items
 
             } while (char.ToLower(decision) != 'n');
             recipes.Add(id, recipeItems);
-            //FileManager.SaveRecipe(recipes);
+        }
+
+        /// <summary>
+        /// This method allows to add a recipe item to the recipes dictionary adding a item to the recipe item list, and in case the final item already has a recipe it adds it to the list
+        /// </summary>
+        /// <param name="i">Item to add</param>
+        /// <param name="id">Final item id</param>
+        public static void AddRecipe(RecipeItem i, int id)
+        {
+            if (!recipes.ContainsKey(id))
+                recipes.Add(id, new List<RecipeItem>());
+
+            if (recipes[id].Contains(i)) return;
+
+
+            recipes[id].Add(i);
         }
         #endregion
 
@@ -61,7 +86,7 @@ namespace CompanyManager.Data.Items
 
                 foreach (RecipeItem i in pair.Value)
                 {
-                    PrimaryStock.GetItem(i.ItemId);
+                    PrimaryStock.GetItem(i.PrimaryItem);
                     Console.WriteLine($"Quantity: {i.Amount}");
                 }
                 Console.WriteLine("*************************************");
@@ -82,6 +107,27 @@ namespace CompanyManager.Data.Items
                     Console.WriteLine(r);
                 }
             }
+            else
+                DataRules.ErrorMsg("There isnt any recipe for that FinalItem");
+
+        }
+
+        /// <summary>
+        /// This method allows to check if a item is already in a recipe
+        /// </summary>
+        /// <param name="i">Recipe item to check</param>
+        /// <returns>bool</returns>
+        public static bool Contains(RecipeItem i)
+        {
+            if (recipes.ContainsKey(i.FinalItem))
+            {
+                if (recipes[i.FinalItem].Contains(i))
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
 
         }
 
@@ -90,20 +136,45 @@ namespace CompanyManager.Data.Items
         /// </summary>
         public static void RecipesCanBeMade()
         {
-            List<int> items = new List<int>();
             bool canDo = true;
+            
             foreach (KeyValuePair<int, List<RecipeItem>> pair in recipes)
             {
+                ArrayList results = new ArrayList();
+
                 foreach (RecipeItem i in pair.Value)
                 {
-                    if (!PrimaryStock.HasEnough(i.Amount, i.ItemId))
+                    if (!PrimaryStock.HasEnough(i.Amount, i.PrimaryItem))
                         canDo = false;
+                    else
+                    {
+                        double stock = PrimaryStock.GetStock(i.PrimaryItem);
+                        double aux =  stock/ i.Amount;
+                        results.Add(aux);
+                    }
+                    
                 }
                 if (canDo)
-                    items.Add(pair.Key);
-            }
-            DataCheck.ShowList(items);
+                {
+                    
+                    int lower = Convert.ToInt32(results[0]);
 
+                    FinalStock.GetItem(pair.Key);
+                    for (int i = 0; i < results.Count; i++)
+                    {
+                        int aux = Convert.ToInt32(results[i]);
+                        if (aux < lower)
+                            lower = aux;
+                    }
+                    Console.WriteLine($"Can make: {lower} {FinalStock.GetName(pair.Key)}");
+                }
+
+                canDo = true;
+                
+
+            }
+            
+            
         }
         /// <summary>
         /// This method allows to check if a recipe can be made
@@ -113,18 +184,32 @@ namespace CompanyManager.Data.Items
         {
 
             bool canDo = true;
-
+            ArrayList results = new ArrayList();
             if (recipes.ContainsKey(id))
             {
                 foreach (RecipeItem i in recipes[id])
                 {
-                    if (!PrimaryStock.HasEnough(i.Amount, i.ItemId))
+                    if (!PrimaryStock.HasEnough(i.Amount, i.PrimaryItem))
                         canDo = false;
+                    else
+                    {
+                        double stock = PrimaryStock.GetStock(i.PrimaryItem);
+                        double aux = stock / i.Amount;
+                        results.Add(aux);
+                    }
                 }
                 if (canDo)
                 {
                     FinalStock.GetItem(id);
-                    Console.WriteLine("There is enought stock to make this item");
+                    Console.WriteLine("There is enough stock to make this item");
+                    int lower = Convert.ToInt32(results[0]);
+                    for (int i = 0; i < results.Count; i++)
+                    {
+                        int aux = Convert.ToInt32(results[i]);
+                        if (aux < lower)
+                            lower = aux;
+                    }
+                    Console.WriteLine($"Can make: {lower} {FinalStock.GetName(id)}");
                     return;
                 }
                 else
@@ -133,13 +218,48 @@ namespace CompanyManager.Data.Items
                     return;
                 }
 
-            }
+            }else
+                DataRules.ErrorMsg("There isnt any recipe for that FinalItem");
         
 
 
         }
         #endregion
+        /// <summary>
+        /// This method allows so save Recipe data
+        /// </summary>
+        public static void SaveRecipe()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CompanyManager\Data\Items";
+            try
+            {
+                StringBuilder sb = new StringBuilder();
 
+                foreach (KeyValuePair<int, List<RecipeItem>> pair in recipes)
+                {
+
+                    foreach (RecipeItem item in pair.Value)
+                    {
+                        sb.AppendFormat($"{item.Id},");
+
+                    }
+                    sb.AppendFormat($"{pair.Key},");
+                    sb.Remove(sb.Length - 1, 1);
+                    sb.AppendLine();
+                }
+
+
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                File.WriteAllText(path + @"\Recipes.csv", sb.ToString(), Encoding.UTF8);// encoding.utf8 allows to have special characters
+
+            }
+            catch
+            {
+                DataRules.ErrorMsg("Error saving in the data file");
+            }
+        }
         #endregion
 
     }
